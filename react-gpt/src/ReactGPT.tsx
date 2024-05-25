@@ -2,6 +2,6 @@
 
 export const ReactGPT = () => {
   return (
-    <div>ReactGPT</div>
+    <div className="fade-in text-xl underline" >ReactGPT</div>
   )
 }
