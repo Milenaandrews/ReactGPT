@@ -1,23 +1,20 @@
 
-import { useState } from "react"
-import { TextMessageBox, TextMessageBoxFile, TextMessageBoxSelect, TypingLoader } from "../../components"
-import { GptMessage } from "../../components/chat-bubbles/GptMessage"
-import { MyMessage } from "../../components/chat-bubbles/MyMessage"
-
+import { useState, } from "react"
+import { GptMessage, MyMessage, TextMessageBox, TypingLoader } from "../components";
 
 interface Message {
     text: string;
     isGpt: boolean;
 }
 
-export const OrthographyPage = () => {
+export const ChatTemplate = () => {
 
     const [isloading, setIsloading] = useState(false);
     const [messages, setMessages] = useState<Message[]>([])
 
-    const handlePost = async (text: string) => {
+    const handlePost = async( text:string ) => {
         setIsloading(true);
-        setMessages((prev) => [...prev, { text: text, isGpt: false }]);
+        setMessages( (prev) => [ ...prev, { text: text, isGpt: false }]);
 
         //TODO: Usecase
 
@@ -59,19 +56,10 @@ export const OrthographyPage = () => {
             </div>
 
             <TextMessageBox
-                onSendMessage={handlePost}
+                onSendMessage={ handlePost}
                 placeholder="Escribe aqui lo que deseas"
                 disableCorrections
             />
-
-            {/* <TextMessageBoxFile
-                onSendMessage={ handlePost }
-                placeholder=" Escribe aqui lo que desees "
-            /> */}
-            {/* <TextMessageBoxSelect
-                onSendMessage={ console.log }
-                options={ [ { id: "1", text: "hola"}, { id: "2", text: "Mundo"}]}
-            /> */}
 
         </div>
     )
